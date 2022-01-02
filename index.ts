@@ -1,5 +1,5 @@
 import * as web3 from "@solana/web3.js";
-import { SolendProtocol } from "./solend";
+import { TulipProtocol } from "./tulip";
 import { ReserveLayout } from "./models";
 
 const ACCOUNT_DISCRIMINATOR_SIZE = 8;
@@ -20,8 +20,8 @@ const runAction = async (address: string) => {
     const decodedValue = ReserveLayout.decode(data);
 
     // calculate utilization + apy from the account
-    const utilizationRatio = SolendProtocol.calculateUtilizationRatio(decodedValue);
-    const apy = SolendProtocol.calculateAPY(utilizationRatio.toNumber(), decodedValue);
+    const utilizationRatio = TulipProtocol.calculateUtilizationRatio(decodedValue);
+    const apy = TulipProtocol.calculateAPY(utilizationRatio.toNumber());
 
     console.log("==== ACCOUNT DATA ====");
 
@@ -31,4 +31,4 @@ const runAction = async (address: string) => {
     console.log("APY: ", apy.toString());
 };
 
-runAction("BgxfHJDzm44T7XG68MYKx7YisTjZu73tVovyZSjJMpmw");
+runAction("FTkSmGsJ3ZqDSHdcnY7ejN1pWV3Ej7i88MYpZyyaqgGt");
